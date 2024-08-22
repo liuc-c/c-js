@@ -23,6 +23,7 @@ let config: Config = {
     throttleDom: true,
     conversions: false,
     d:'',
+    u:'',
     mark:'',
     api:'',
     isSinglePage:true,

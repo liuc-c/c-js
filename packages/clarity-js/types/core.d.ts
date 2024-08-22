@@ -142,6 +142,7 @@ export interface Config {
     throttleDom?: boolean;
     conversions?: boolean;
     d:string | number,
+    u:string,
     mark:string | number,
     api?:string,
     isSinglePage?:Boolean,

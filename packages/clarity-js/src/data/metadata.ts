@@ -38,13 +38,12 @@ export function start(): void {
   // Populate ids for this page
   let s = session();
   let u = user();
-  let uuid = config.mark;
   let domainId = config.d;
   let pv = generatePv();
 
   // let projectId = config.projectId || hash(location.host);
   // data = { projectId, userId: u.id, sessionId: s.session, pageNum: s.count };
-  data = { domainId, uuid, pv, sessionId: s.session, pageNum: s.count };
+  data = { domainId, uuid:u.id, pv, sessionId: s.session, pageNum: s.count };
 
   // Override configuration based on what's in the session storage, unless it is blank (e.g. using upload callback, like in devtools)
   config.lean =
@@ -325,7 +324,8 @@ function uuid(k: string = null, v: string = null) {
     k = "st_uuid_" + config.d;
   }
   if (!v) {
-    v = generateId("uuid", config.d, config.mark).toString();
+    // v = generateId("uuid", config.d, config.mark).toString();
+    v = config.u;
   }
   var uuid = localStorage.getItem(k);
 
