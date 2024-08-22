@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Clarity Tests",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/packages/clarity-js",
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/ts-mocha",
+            "runtimeArgs": [
+                "-p",
+                "test/tsconfig.test.json",
+                "${file}"
+            ],
+            "protocol": "inspector"
+        }
+  
+    ]
+  }
