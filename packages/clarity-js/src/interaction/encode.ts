@@ -60,6 +60,8 @@ export default async function (type: Event, ts: number = null): Promise<void> {
                 tokens.push(scrub.url(entry.data.link));
                 tokens.push(cHash);
                 tokens.push(entry.data.trust);
+                tokens.push(entry.data.title);
+                tokens.push(entry.data.url);
                 queue(tokens);
                 timeline.track(entry.time, entry.event, cHash, entry.data.x, entry.data.y, entry.data.reaction, entry.data.context);
             }
@@ -128,6 +130,9 @@ export default async function (type: Event, ts: number = null): Promise<void> {
                     tokens.push(entry.data.y);
                     tokens.push(sTopHash);
                     tokens.push(sBottomHash);
+                    tokens.push(entry.data.docHeight);
+                    tokens.push(entry.data.title);
+                    tokens.push(entry.data.url);
                     queue(tokens);
                     baseline.track(entry.event, entry.data.x, entry.data.y, entry.time);
                 }
