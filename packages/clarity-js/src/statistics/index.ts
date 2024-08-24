@@ -54,7 +54,7 @@ async function upload(){
 function send(payload,zipped:Uint8Array,callback=null) {
     const url = config.upload as string;
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", url + '/api/c', true);
+    xhr.open("POST", url + '/c', true);
     
     xhr.timeout = Setting.UploadTimeout;
     if (zipped) {
