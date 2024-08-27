@@ -132,7 +132,7 @@ async function upload(final: boolean = false): Promise<void> {
     // In all other cases, we continue to send back string value
     let payload = stringify(encoded);
     let zipped = last ? null : await compress(payload)
-    
+
     // let zipped =  null
     metric.sum(Metric.TotalBytes, zipped ? zipped.length : payload.length);
     send(payload, zipped, envelope.data.sequence, last);
@@ -154,7 +154,7 @@ function send(payload: string, zipped: Uint8Array, sequence: number, beacon: boo
     // Upload data if a valid URL is defined in the config
     if (typeof config.upload === Constant.String) {
         const url = config.upload as string;
-        
+
         let dispatched = false;
 
         // If it's the last payload, attempt to upload using sendBeacon first.
@@ -179,7 +179,7 @@ function send(payload: string, zipped: Uint8Array, sequence: number, beacon: boo
             // Not all browsers support compression API and the support for it in supported browsers is still experimental
             if (sequence in transit) { transit[sequence].attempts++; } else { transit[sequence] = { data: payload, attempts: 1 }; }
             let xhr = new XMLHttpRequest();
-            
+
             xhr.open("POST", url + '/v', true);
             xhr.timeout = Setting.UploadTimeout;
             xhr.ontimeout = () => { report(new Error(`${Constant.Timeout} : ${url}`)) };

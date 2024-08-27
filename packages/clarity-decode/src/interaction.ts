@@ -33,8 +33,6 @@ export function decode(tokens: Data.Token[]): InteractionEvent {
                 context: tokens[9] as number,
                 text: tokens[10] as string,
                 link: tokens[11] as string,
-                title: tokens[12] as string,
-                url: tokens[13] as string,
                 hash: clickHashes[0],
                 hashBeta: clickHashes.length > 0 ? clickHashes[1] : null,
                 trust: tokens.length > 13 ? tokens[13] as number : Data.BooleanFlag.True
@@ -77,9 +75,7 @@ export function decode(tokens: Data.Token[]): InteractionEvent {
                 y: tokens[4] as number,
                 top: tokens.length > 5 ? tokens[5] as string : null,
                 bottom: tokens.length > 6 ? tokens[6] as string : null,
-                docHeight: tokens.length > 7 ? tokens[7] as number : null,
-                title: tokens.length > 8 ? tokens[8] as string : null,
-                url: tokens.length > 9 ? tokens[9] as string : null
+                docHeight: tokens.length > 7 ? tokens[7] as number : null
             };
             return { time, event, data: scrollData };
         case Data.Event.Timeline:
