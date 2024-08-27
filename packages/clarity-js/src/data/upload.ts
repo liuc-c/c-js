@@ -192,6 +192,7 @@ function send(payload: string, zipped: Uint8Array, sequence: number, beacon: boo
                 xhr.send(zipped);
             } else {
                 // In all other cases, continue sending string back to the server
+                xhr.setRequestHeader("Content-Type","application/json");
                 xhr.send(payload);
             }
         }

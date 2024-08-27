@@ -4,7 +4,7 @@ import {data as  navigator} from "@src/statistics/navigator"
 import {data as  document} from "@src/statistics/document"
 import compress from "@src/data/compress";
 import config from "@src/core/config";
-import { Setting} from "@clarity-types/data";
+import { Setting,Constant} from "@clarity-types/data";
 
 import * as metadata from "@src/data/metadata";
 
@@ -59,16 +59,17 @@ function send(payload,zipped:Uint8Array,callback=null) {
     xhr.timeout = Setting.UploadTimeout;
     if (zipped) {
         // xhr.setRequestHeader('Content-Type', 'application/octet-stream');
-        // xhr.setRequestHeader('Content-Length', zipped.length.toString());
+        xhr.setRequestHeader(Constant.Accept, Constant.ClarityGzip);
         xhr.send(zipped);
     } else {
-        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        var str = '';
-        if (payload) {
-            Object.keys(payload).forEach((key) => (str += `${key}=${payload[key]}&`));
-            str = str.slice(0, -1);
-        }
-        xhr.send(payload);
+        xhr.setRequestHeader("Content-Type","application/json");
+        xhr.send(JSON.stringify(payload));
+        // var str = '';
+        // if (payload) {
+        //     Object.keys(payload).forEach((key) => (str += `${key}=${payload[key]}&`));
+        //     str = str.slice(0, -1);
+        // }
+        // xhr.send(str);
     }
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
