@@ -118,8 +118,6 @@ export interface ClickData {
     link: string;
     hash: string;
     trust: number;
-    title: string;
-    url: string;
 }
 
 export interface ClipboardData {
@@ -139,8 +137,6 @@ export interface ScrollData {
     top: Node | string;
     bottom: Node | string;
     docHeight: number;
-    title: string;
-    url: string;
 }
 
 export interface SelectionData {
