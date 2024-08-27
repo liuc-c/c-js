@@ -43,7 +43,8 @@ export function envelope(last: boolean): Token[] {
     data.sessionId,
     data.pageNum,
     data.upload,
-    data.end
+    data.end,
+    window.location.href
   ];
 }
 
