@@ -44,7 +44,8 @@ export function envelope(last: boolean): Token[] {
     data.pageNum,
     data.upload,
     data.end,
-    window.location.href
+    window.location.href,
+    document.title
   ];
 }
 
