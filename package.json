@@ -5,14 +5,15 @@
   "repository": "https://github.com/microsoft/clarity.git",
   "author": "Sarvesh Nagpal <sarveshn@microsoft.com>",
   "license": "MIT",
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
+  "workspaces": [
+    "packages/*",
+    "packages/clarity-util"
+  ],
   "scripts": {
     "version": "npx lerna version",
+    "dev:playground": "yarn workspace playground dev",
     "build": "npx lerna run build --stream",
+    "build:util": "yarn workspace clarity-util build",
     "build:js": "yarn workspace clarity-js build",
     "build:decode": "yarn workspace clarity-decode build",
     "build:visualize": "yarn workspace clarity-visualize build",

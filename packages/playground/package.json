@@ -1,9 +1,11 @@
 {
+  "name": "playground",
+  "version": "0.7.41",
   "type": "module",
   "private": true,
   "scripts": {
     "build": "vite build",
-    "dev": "vite --port 3333 --open",
+    "dev": "vite --port 4545 --open",
     "lint": "eslint .",
     "typecheck": "vue-tsc --noEmit",
     "preview": "vite preview",
@@ -14,7 +16,11 @@
   "dependencies": {
     "@vueuse/core": "^10.11.0",
     "vue": "^3.4.35",
-    "vue-router": "^4.4.2"
+    "vue-router": "^4.4.2",
+    "clarity-util": "0.0.1",
+    "clarity-visualize": "0.7.41",
+    "clarity-decode": "0.7.41",
+    "clarity-js": "0.7.41"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.24.1",
@@ -41,9 +47,6 @@
     "vite": "^5.3.5",
     "vitest": "^2.0.5",
     "vue-tsc": "^2.0.29"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
     "*": "eslint --fix"

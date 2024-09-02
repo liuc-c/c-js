@@ -1,2 +1,4 @@
-export const one = 1
-export const two = 2
+export { useRenderer } from './renderer'
+export type { RendererComposition } from './renderer'
+export type { RenderStrategy } from './renderStrategies'
+export { RecordingRenderStrategy, HeatmapRenderStrategy } from './renderStrategies'
