@@ -53,7 +53,21 @@ function recompute(event: UIEvent = null): void {
 
     let current: ScrollState = { time: time(event), event: Event.Scroll, data:
             {target: element, x, y, top, bottom,
-                docHeight: document.documentElement.scrollHeight} };
+                docHeight: (() => {
+                    const doc = document;
+                    const body = doc.body;
+                    const html = doc.documentElement;
+                    const inner = window.innerHeight;
+                    return Math.max(
+                        body.scrollHeight,
+                        body.offsetHeight,
+                        html.clientHeight,
+                        html.scrollHeight,
+                        html.offsetHeight,
+                        inner || 0
+                    );
+                })()
+            } };
 
     // We don't send any scroll events if this is the first event and the current position is top (0,0)
     if ((event === null && x === 0 && y === 0) || (x === null || y === null)) {
