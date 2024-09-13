@@ -129,6 +129,7 @@ export default async function (type: Event, ts: number = null): Promise<void> {
                     tokens.push(sTopHash);
                     tokens.push(sBottomHash);
                     tokens.push(entry.data.docHeight);
+                    tokens.push(entry.data.type);
                     queue(tokens);
                     baseline.track(entry.event, entry.data.x, entry.data.y, entry.time);
                 }

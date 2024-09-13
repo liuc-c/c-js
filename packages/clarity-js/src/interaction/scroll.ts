@@ -52,21 +52,28 @@ function recompute(event: UIEvent = null): void {
     const bottom = getPositionNode(xPosition, endYPosition);
 
     let current: ScrollState = { time: time(event), event: Event.Scroll, data:
-            {target: element, x, y, top, bottom,
+            {target: element, x, 
+                y: element === de ? y +height : y,
+                top, bottom,
                 docHeight: (() => {
-                    const doc = document;
-                    const body = doc.body;
-                    const html = doc.documentElement;
-                    const inner = window.innerHeight;
-                    return Math.max(
-                        body.scrollHeight,
-                        body.offsetHeight,
-                        html.clientHeight,
-                        html.scrollHeight,
-                        html.offsetHeight,
-                        inner || 0
-                    );
-                })()
+                    if (element === de) {
+                        const doc = document;
+                        const body = doc.body;
+                        const html = doc.documentElement;
+                        const inner = window.innerHeight;
+                        return Math.max(
+                            body.scrollHeight,
+                            body.offsetHeight,
+                            html.clientHeight,
+                            html.scrollHeight,
+                            html.offsetHeight,
+                            inner || 0
+                        );
+                    } else {
+                        return (element as HTMLElement).scrollHeight;
+                    }
+                })(),
+                type: element === de ? 'document' : 'element'
             } };
 
     // We don't send any scroll events if this is the first event and the current position is top (0,0)

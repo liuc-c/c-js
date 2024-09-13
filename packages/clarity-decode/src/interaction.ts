@@ -75,7 +75,8 @@ export function decode(tokens: Data.Token[]): InteractionEvent {
                 y: tokens[4] as number,
                 top: tokens.length > 5 ? tokens[5] as string : null,
                 bottom: tokens.length > 6 ? tokens[6] as string : null,
-                docHeight: tokens.length > 7 ? tokens[7] as number : null
+                docHeight: tokens.length > 7 ? tokens[7] as number : null,
+                type: tokens.length > 8 ? tokens[8] as string : null
             };
             return { time, event, data: scrollData };
         case Data.Event.Timeline:

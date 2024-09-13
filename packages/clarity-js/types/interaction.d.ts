@@ -137,6 +137,7 @@ export interface ScrollData {
     top: Node | string;
     bottom: Node | string;
     docHeight: number;
+    type: string;
 }
 
 export interface SelectionData {
